@@ -15,8 +15,9 @@ if ($con->connect_error) {
 
 $apt_id = $_POST['apt_del'];
 
-$del_comment = "DELETE FROM comment where apt_id = $apt_id";
-if(mysqli_query($con, $del_comment))
+$del_comment = "DELETE FROM comment WHERE apt_id = $apt_id";
+$del_review = "DELETE FROM review WHERE apt_id = $apt_id";
+if(mysqli_query($con, $del_comment) && mysqli_query($con, $del_review))
 {
     $del_appointment="DELETE FROM appointment WHERE apt_id = $apt_id";
     if(mysqli_query($con, $del_appointment))
